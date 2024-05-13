@@ -1,8 +1,11 @@
 import express from 'express';
+import helmet from 'helmet';
 
 import { IHttpInterface, IHttpRoute } from '../../types/interface';
 import { Container } from '../../types/core';
 import { HelloWorldController } from './controller/helloWorld';
+import cors from 'cors';
+import compression from 'compression';
 
 type Config = {
   coreContainer: Container;
@@ -20,7 +23,12 @@ export class HttpInterface implements IHttpInterface {
     this.app = express();
 
     this.app.use(
-      express.json()
+      helmet(),
+      cors(),
+      compression(),
+      express.json({
+        limit: '500kb'
+      }),
     );
 
     this.setupRoutes();
