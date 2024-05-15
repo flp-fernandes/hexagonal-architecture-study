@@ -1,4 +1,5 @@
 import { createContainer } from './interface/container';
+import { logger } from './util/logger';
 
 type AppConfig = {
   http?: boolean;
@@ -30,4 +31,5 @@ const app = new App({
 
 setImmediate(() => {
   app.run();
+  logger(App.name).debug('App initialized');
 })

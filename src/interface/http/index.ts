@@ -1,11 +1,11 @@
+import compression from 'compression';
+import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 
 import { IHttpInterface, IHttpRoute } from '../../types/interface';
 import { Container } from '../../types/core';
 import { HelloWorldController } from './controller/helloWorld';
-import cors from 'cors';
-import compression from 'compression';
 
 type Config = {
   coreContainer: Container;

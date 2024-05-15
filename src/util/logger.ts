@@ -10,11 +10,30 @@ const {
   combine,
   timestamp,
   json,
-  printf
+  printf,
+  label,
+  colorize
 } = format;
 
-export const logger = createLogger({
-  format: combine(
-    timestamp({ format: 'YYYY-MM-DD HH:mm:sss'})
-  )
-})
+const logFormat = printf(({ level, message, label, timestamp }) => {
+  return `${timestamp} - [${label}] ${level}: ${message}`;
+});
+
+export const logger = (className: string) => { 
+  return createLogger({
+    level: 'debug',
+    format: combine(
+      timestamp({ format: 'YYYY-MM-DD HH:mm:sss'}),
+      label({ label: className }),
+      logFormat,
+    ),
+    transports: [
+      new transports.Console({ format: colorize() }),
+      new transports.File({
+        level: 'error',
+        format: json(),
+        filename: 'errorLog.log'
+      })
+    ]
+  })
+};
