@@ -98,14 +98,14 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  // "include": [
-  //   "scr/**/**/*.ts",
-  //   "src/**/**/*.d.ts",
-  //   "migrations/*.ts",
-  //   "configs/jest.config.ts"
-  // ],
-  // "exclude": [
-  //   "dist",
-  //   "node_modules"
-  // ]
+  "include": [
+    "scr/**/**/*.ts",
+    "src/**/**/*.d.ts",
+    "migrations/*.ts",
+    "configs/jest.config.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }
